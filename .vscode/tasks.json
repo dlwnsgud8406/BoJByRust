@@ -86,10 +86,10 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				".vscode/test.sh ./${fileBasenameNoExtension} && if [ $? -eq 0 ]; then git add . && git commit -m \"Auto commit after test\" && git push origin main; fi"
+				"../.vscode/test.sh ./${fileBasenameNoExtension} && if [ $? -eq 0 ]; then cd .. && git add . && git commit -m \"Auto commit after test\" && git push origin main; fi"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}"
+				"cwd": "${fileDirname}"
 			},
 			"isBackground": false,
 			"problemMatcher": [],
