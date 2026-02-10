@@ -1,0 +1,1 @@
+FlatMap<SplitAsciiWhitespace<'_>, Result<usize, ParseIntError>, for<'a> fn(&'a str) -> Result<usize, <usize as FromStr>::Err> {core::str::<impl str>::parse::<usize>}>

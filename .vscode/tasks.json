@@ -1,0 +1,152 @@
+{
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang 활성 파일 빌드",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-fcolor-diagnostics",
+				"-fansi-escape-codes",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "디버거에서 생성된 작업입니다."
+		},
+		{
+			"label": "C++ 실행",
+			"type": "shell",
+			"command": "./${fileBasenameNoExtension}",
+			"args": [],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Rust 빌드",
+			"type": "shell",
+			"command": "rustc",
+			"args": [
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Rust 실행",
+			"type": "shell",
+			"command": "./${fileBasenameNoExtension}",
+			"args": [],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "C++ 테스트",
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"${workspaceFolder}/.vscode/test.sh",
+				"./${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"dependsOn": ["C/C++: clang 활성 파일 빌드"]
+		},
+		{
+			"label": "Rust 테스트",
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"-c",
+				".vscode/test.sh ./${fileBasenameNoExtension} && if [ $? -eq 0 ]; then git add . && git commit -m \"Auto commit after test\" && git push origin main; fi"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"dependsOn": ["Rust 빌드"]
+		},
+		{
+			"label": "Python 실행",
+			"type": "shell",
+			"command": "python3",
+			"args": [
+				"${file}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Python 테스트",
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"${workspaceFolder}/.vscode/test.sh",
+				"python3",
+				"${fileBasename}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Auto Commit and Push",
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"-c",
+				"if [ $? -eq 0 ]; then git add . && git commit -m 'Auto commit after test' && git push origin main; fi"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"dependsOn": [
+				"Rust 테스트"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			}
+		}
+	],
+	"version": "2.0.0"
+}

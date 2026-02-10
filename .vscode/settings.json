@@ -1,0 +1,8 @@
+{
+    "rust-analyzer.check.command": "check",
+    "rust-analyzer.linkedProjects": [
+        "Cargo.toml"
+    ],
+    "rust-analyzer.cargo.buildScripts.enable": true,
+    "rust-analyzer.diagnostics.enable": true
+}
