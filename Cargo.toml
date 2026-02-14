@@ -3,5 +3,5 @@ name = "boj"
 version = "0.1.0"
 edition = "2021"
 [[bin]]
-name = "28766"
-path = "28766. 문자와 문자열/28766.rs"
+name = "2439"
+path = "2439. 별 찍기 - 2/2439.rs"
