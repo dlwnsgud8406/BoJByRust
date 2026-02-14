@@ -3,5 +3,5 @@ name = "boj"
 version = "0.1.0"
 edition = "2021"
 [[bin]]
-name = "11654"
-path = "11654. 아스키코드/11654.rs"
+name = "28766"
+path = "28766. 문자와 문자열/28766.rs"
