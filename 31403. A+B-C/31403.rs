@@ -1,26 +1,24 @@
-use std::io::Read;
+use std::io;
 
 fn main() {
-    // 입력 받기
-    let mut input = String::new();
-    std::io::stdin().read_to_string(&mut input).unwrap();
-    let mut it = input.split_whitespace();
+    let mut a_str = String::new();
+    let mut b_str = String::new();
+    let mut c_str = String::new();
 
+    io::stdin().read_line(&mut a_str).unwrap();
+    io::stdin().read_line(&mut b_str).unwrap();
+    io::stdin().read_line(&mut c_str).unwrap();
 
-    // 문자열
-    let a_str = it.next().unwrap().to_string();
-    let b_str = it.next().unwrap().to_string();
-    let c_str = it.next().unwrap().to_string();
+    let a_str = a_str.trim().to_string();
+    let b_str = b_str.trim().to_string();
+    let c_str = c_str.trim().to_string();
 
-    // 숫자
-    let a: u32 = a_str.parse().unwrap();
-    let b: u32 = b_str.parse().unwrap();
-    let c: u32 = c_str.parse().unwrap();
+    let a: i64 = a_str.parse().unwrap();
+    let b: i64 = b_str.parse().unwrap();
+    let c: i64 = c_str.parse().unwrap();
 
-    // 숫자열 계산
     println!("{}", a + b - c);
 
-    // 문자열 계산
-    let ab: u32 = format!("{}{}", a_str, b_str).parse().unwrap();
+    let ab: i64 = format!("{}{}", a_str, b_str).parse().unwrap();
     println!("{}", ab - c);
 }
