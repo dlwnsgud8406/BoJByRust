@@ -23,5 +23,5 @@ fn main() {
         std::io::stdin().read_line(&mut bufQuery).unwrap();
         let site = bufQuery.trim();
         println!("{}", passwordBook.get(site).unwrap());
-    }
+
 }
