@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "1978"
-path = "1978. 소수 찾기/1978.rs"
+name = "15829"
+path = "15829. Hashing/15829.rs"
